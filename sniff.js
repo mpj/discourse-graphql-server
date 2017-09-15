@@ -1,12 +1,7 @@
-module.exports = (...args) => {
-  let tag = 'SNIFF'
-  let val
-  if (args.length === 2) {
-    tag = args[0]
-    val = args[1]
-  } else {
-    val = args[0]
-  }
-  console.log(`[${tag}]`, val)
+const fn = (tagName, val) => {
+  console.log(`[${tagName}]`, val)
   return val
 }
+const api = fn.bind(null, 'SNIFF')
+api.tag = tagName => fn.bind(null, tagName)
+module.exports = api
