@@ -1,7 +1,7 @@
 const {
   errorUnlessOK,
   parseAsJSON
-} = require('./helpers')
+} = require('../helpers')
 
 module.exports = function getUserByUsernameFactory({
   discourseGet

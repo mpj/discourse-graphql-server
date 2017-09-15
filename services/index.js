@@ -10,13 +10,9 @@ const {
 const startExpressFactory = require('./start-express')
 const graphQLSchemaFactory = require('./graphql-schema')
 
-const getUserByUsernameFactory = require('./get-user-by-username')
-
-const { discourseGet } = require('./discourse')
-
-const getUserByUsername = getUserByUsernameFactory({
-  discourseGet
-})
+const {
+  getUserByUsername
+} = require('./discourse')
 
 const graphQLSchema = graphQLSchemaFactory({
   GraphQLSchema,

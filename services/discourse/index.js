@@ -3,6 +3,8 @@ const baseUrl = 'https://www.funfunforum.com'
 
 const discourseAPIUrlFactory = require('./discourse-api-url')
 const discourseGetFactory = require('./discourse-get')
+const getUserByUsernameFactory = require('./get-user-by-username')
+const getActionsByUsernameFactory = require('./get-actions-by-username')
 
 const discourseAPIUrl = discourseAPIUrlFactory({
   process,
@@ -14,7 +16,15 @@ const discourseGet = discourseGetFactory({
   fetch
 })
 
-module.exports = {
+const getUserByUsername = getUserByUsernameFactory({
   discourseGet
-}
+})
 
+const getActionsByUsername = getActionsByUsernameFactory({
+  discourseGet
+})
+
+module.exports = {
+  getUserByUsername,
+  getActionsByUsername
+}
