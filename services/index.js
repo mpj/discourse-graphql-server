@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const {
@@ -6,25 +6,16 @@ const {
   GraphQLString,
   GraphQLSchema
 } = require('graphql')
-const queryString = require('query-string')
 
 const startExpressFactory = require('./start-express')
 const graphQLSchemaFactory = require('./graphql-schema')
-const discourseAPIUrlFactory = require('./discourse-api-url')
+
 const getUserByUsernameFactory = require('./get-user-by-username')
 
-const baseUrl = 'https://www.funfunforum.com'
-
-const discourseAPIUrl = discourseAPIUrlFactory({
-  fetch,
-  queryString,
-  process,
-  baseUrl
-})
+const { discourseGet } = require('./discourse')
 
 const getUserByUsername = getUserByUsernameFactory({
-  fetch,
-  discourseAPIUrl
+  discourseGet
 })
 
 const graphQLSchema = graphQLSchemaFactory({

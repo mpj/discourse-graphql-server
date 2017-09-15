@@ -1,15 +1,13 @@
+const queryString = require('query-string')
 module.exports = function discourseAPIUrlFactory({
-  fetch,
-  queryString,
   process,
   baseUrl
 }) {
-  return function discourseAPIUrl(path, query) {
+  return function discourseAPIUrl(path, queryObject = {}) {
     if (path.includes('?')) {
       throw new Error('path cannot include query')
     }
 
-    const queryObject = query ? queryString.parse(query) : {}
     queryObject.api_key = process.env.DISCOURSE_API_KEY
     queryObject.api_username = 'system'
 
